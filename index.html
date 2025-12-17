@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Edge Admin</title>
-    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d1117'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2358a6ff' font-family='Arial' font-weight='bold'%3EE%3C/text%3E%3C/svg%3E">
 
   </head>
     
@@ -36,6 +36,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <title>ENBD Performance Tracker — Single File</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d1117'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%2358a6ff' font-family='Arial,sans-serif' font-weight='bold'%3EE%3C/text%3E%3C/svg%3E">
 <!-- Local file:// stylesheet commented out to avoid invalid URL warnings in other environments -->
 <!-- <link href="file:///Users/fuadtaher/Desktop/New%20Tracker/NEWENDBTRACKER_files/css2" rel="stylesheet"> -->
 <style>
@@ -481,20 +482,162 @@
   }
 
   @media print {
-    .overlay { display: none !important; }
-    .right-icon-wrap { display: none !important; }
-    body { margin: 0 !important; font-size: 10px !important; }
-    table th, table td { padding: 2px !important; font-size: 9px !important; }
-    .card { padding: 4px !important; }
-    .page-break-inside { page-break-inside: avoid !important; }
-    #yearDataLabel { font-size: 14px !important; }
-    .kpis { font-size: 10px !important; }
-    .val { font-size: 12px !important; }
-    h1 { font-size: 16px !important; }
-    .chartCard canvas { height: 120px !important; }
-    @page { margin: 0.3cm; }
-  }</style>
+    /* ===== HIDE EVERYTHING EXCEPT DATA ===== */
+    body > *:not(.wrap),
+    .overlay, .right-icon-wrap, .sidebar, .toolbar-right, .btn, .iconbtn, 
+    button, .toast, .chartCard, canvas, .owner-year, .titlebar-inner,
+    input, select, .grid.row2, .grid.row3, .Monthly, 
+    .monthlyOverview, #monthlyChart, .chart, svg, .rem-card,
+    .owner-logo, .owner-card, .theme-toggle, tfoot, .fineTextInline,
+    #privacyUnderTotal, #passwordStorageNotice, #monthDebug,
+    .left-panel, .nav, header nav, aside, footer,
+    [class*="sidebar"], [class*="menu"], [class*="nav"] { 
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+    
+    /* FORCE WHITE BACKGROUND EVERYWHERE */
+    html, body, div, section, article, main, .wrap, .card, .kpi, .kpis, table, th, td {
+      background: white !important;
+      background-color: white !important;
+      color: black !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    
+    /* SCALE UP EVERYTHING */
+    html {
+      font-size: 24px !important;
+    }
+    
+    body { 
+      margin: 0 !important;
+      padding: 10mm !important;
+      width: 100% !important;
+      min-height: 100% !important;
+    }
+    
+    /* Reset ALL positioning */
+    * {
+      position: static !important;
+      float: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      opacity: 1 !important;
+    }
+    
+    .wrap {
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 auto !important;
+      display: block !important;
+    }
+    
+    /* ===== TITLE - BIG ===== */
+    .titlebar { 
+      display: block !important;
+      padding: 5mm 0 !important;
+      margin-bottom: 8mm !important;
+      border-bottom: 3px solid black !important;
+      text-align: center !important;
+    }
+    
+    h1 {
+      font-size: 32pt !important;
+      font-weight: 900 !important;
+      text-align: center !important;
+      margin: 0 !important;
+      color: black !important;
+    }
+    
+    /* ===== KPIs - GIANT NUMBERS ===== */
+    .kpis, .grid.row1 { 
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 5mm !important;
+      margin-bottom: 10mm !important;
+      justify-content: center !important;
+    }
+    
+    .kpi {
+      flex: 0 0 45% !important;
+      padding: 8mm !important;
+      border: 3px solid black !important;
+      text-align: center !important;
+      page-break-inside: avoid !important;
+      margin-bottom: 5mm !important;
+    }
+    
+    .kpi h3 {
+      font-size: 14pt !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      margin: 0 0 4mm 0 !important;
+      color: black !important;
+    }
+    
+    .kpi .val {
+      font-size: 36pt !important; 
+      font-weight: 900 !important;
+      line-height: 1.2 !important;
+      color: black !important;
+    }
+    
+    /* ===== TABLE - LARGE & CLEAR ===== */
+    .tableCard, .card {
+      margin-top: 8mm !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    table { 
+      width: 100% !important;
+      border-collapse: collapse !important;
+      margin: 5mm 0 !important;
+    }
+    
+    table th, table td { 
+      padding: 4mm 6mm !important; 
+      font-size: 14pt !important;
+      font-weight: 600 !important;
+      border: 2px solid black !important;
+      text-align: center !important;
+      color: black !important;
+    }
+    
+    table th {
+      background: #ddd !important;
+      font-weight: 900 !important;
+      font-size: 12pt !important;
+    }
+    
+    /* Number cells even bigger */
+    table td {
+      font-size: 16pt !important;
+      font-weight: 700 !important;
+    }
+    
+    .grid { display: block !important; }
+    
+    h2 { font-size: 24pt !important; font-weight: 900 !important; margin: 8mm 0 5mm !important; color: black !important; }
+    
+    @page { 
+      margin: 8mm;
+      size: A4 portrait;
+    }
+  }
+</style>
 <style>
+  /* Toast notification styles */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
   /* Toast notification styles */
   .toast {
     position: fixed;
@@ -1396,15 +1539,15 @@ AYAT<br><small style="font-size:9px; font-weight:normal;">properties</small>
 <tr>
 <td style="padding:6px; vertical-align:top;">
 <div id="privacyUnderTotal" style="display:flex; gap:6px; align-items:center;">
-<input id="currentPassword" placeholder="cur" style="padding: 4px; font-size: 11px; width: 68px; border-radius: 6px; display: block; background: var(--accent); color: #ffffff;" title="Current password" type="password">
-<input id="newPassword" placeholder="new" style="padding:4px; font-size:11px; width:68px; border-radius:6px; background: var(--accent); color: #ffffff;" title="New password" type="password">
-<button class="btn" id="btnSavePassword" style="padding:4px; font-size:12px; width:36px; height:28px; display:flex; align-items:center; justify-content:center;" title="Save">🔒</button>
-<button class="btn" id="btnRemovePassword" style="padding:4px; font-size:12px; width:36px; height:28px; display:flex; align-items:center; justify-content:center;" title="Remove">🗑️</button>
+<input id="currentPassword" type="hidden">
+<input id="newPassword" type="hidden">
+<button class="btn" id="btnSavePassword" style="display:none;">🔒</button>
+<button class="btn" id="btnRemovePassword" style="display:none;">🗑️</button>
 <button class="btn" id="btnEditOwners" style="padding:6px 8px; font-size:12px" title="Manage owners">👥</button>
 <button class="btn" id="btnEditYears" style="padding:6px 8px; font-size:12px" title="Manage years">📅</button>
 <button class="btn" id="btnManageUsers" style="padding:6px 8px; font-size:12px; display:none" title="Assign owners to team members">👤</button>
 <button class="btn" id="btnDuplicateOwner" style="padding:6px 8px; font-size:12px" title="Duplicate owner data">📋</button>
-<span class="fineTextInline">Enter current password to enable edits. Renaming owners migrates data for the selected year.</span>
+<span class="fineTextInline">Renaming owners migrates data for the selected year.</span>
 </div>
 <div class="small" id="passwordStorageNotice" style="display:none; margin-top:6px; color: var(--danger);"></div>
 </td>
@@ -1454,8 +1597,8 @@ AYAT<br><small style="font-size:9px; font-weight:normal;">properties</small>
 </footer>
 </div>
 </div>
-<!-- Password Overlay -->
-<div aria-hidden="true" class="overlay" id="passwordOverlay">
+<!-- Password Overlay (disabled) -->
+<div aria-hidden="true" class="overlay" id="passwordOverlay" style="display:none !important;">
 <div aria-labelledby="passwordTitle" aria-modal="true" class="pop" role="dialog">
 <header>
 <h3 id="passwordTitle">Enter Password</h3>
@@ -3034,8 +3177,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
     }
     function showPasswordOverlay() {
-      dom('passwordOverlay').classList.add('show');
-      dom('passwordOverlay').setAttribute('aria-hidden','false');
+      // Password overlay disabled - always allow access
+      return;
       dom('passwordInput').focus();
     }
     let isUnlocked = false; // track if password has been entered for data entry
@@ -7947,8 +8090,8 @@ Are you sure you want to continue?`;
       }
     }
     function getPassword(){
-      const result = safeLocalGet('enbd:password');
-      return result.value;
+      // Password protection disabled - always return empty
+      return '';
     }
     function setPassword(p){
       const value = p ? String(p) : null;
@@ -7982,10 +8125,8 @@ Are you sure you want to continue?`;
       }
     }
     function checkPasswordOnLoad(){
-      if(getPassword()){
-        dom('passwordOverlay').classList.add('show');
-        dom('passwordOverlay').setAttribute('aria-hidden','false');
-      }
+      // Password check disabled - always allow access
+      return;
     }
     applyPasswordStorageAvailability();
     dom('btnSavePassword').addEventListener('click', () => {
@@ -8134,8 +8275,83 @@ Are you sure you want to continue?`;
         if(obInp) save('openingBalance', Number(obInp.value.replace(/,/g,'')||0));
         saveMonthData(months);
         recompute();
-        // Print with compact styles
-        window.print();
+        
+        // ===== FORCE PRINT STYLES VIA JAVASCRIPT =====
+        // Create a print-friendly version
+        const printWin = window.open('', '_blank');
+        const title = document.querySelector('h1')?.textContent || 'ENBD Performance Tracker';
+        const owner = document.getElementById('owner')?.value || document.querySelector('.y-owner')?.textContent?.trim() || '';
+        const year = document.getElementById('year')?.value || document.querySelector('.y-year')?.textContent?.trim() || '';
+        
+        // Gather KPI data
+        const kpis = [];
+        document.querySelectorAll('.kpi').forEach(kpi => {
+          const label = kpi.querySelector('h3')?.textContent || '';
+          const val = kpi.querySelector('.val')?.textContent || '';
+          if(label && val) kpis.push({label, val});
+        });
+        
+        // Gather table data
+        const tableRows = [];
+        const headerCells = [];
+        document.querySelectorAll('#monthTable thead th').forEach(th => {
+          headerCells.push(th.textContent.trim());
+        });
+        document.querySelectorAll('#monthTable tbody tr').forEach(tr => {
+          const row = [];
+          tr.querySelectorAll('td').forEach(td => {
+            const inp = td.querySelector('input');
+            row.push(inp ? inp.value : td.textContent.trim());
+          });
+          tableRows.push(row);
+        });
+        
+        // Build print HTML
+        let html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Print - ${title}</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: Arial, sans-serif; padding: 8mm; background: white; color: black; }
+          .owner-header { font-size: 9pt; text-align: left; margin-bottom: 4mm; color: #000; font-weight: 700; border-bottom: 1px solid #ccc; padding-bottom: 2mm; }
+          h1 { font-size: 15pt; text-align: center; margin-bottom: 3mm; font-weight: 900; }
+          .kpis { display: flex; flex-wrap: wrap; gap: 2mm; justify-content: center; margin-bottom: 6mm; }
+          .kpi { flex: 0 0 22%; border: 1px solid black; padding: 3mm; text-align: center; }
+          .kpi-label { font-size: 6pt; font-weight: 700; text-transform: uppercase; margin-bottom: 1mm; }
+          .kpi-val { font-size: 12pt; font-weight: 900; }
+          table { width: 100%; border-collapse: collapse; margin-top: 5mm; }
+          th, td { border: 1px solid black; padding: 2mm; font-size: 8pt; text-align: center; }
+          th { background: #eee; font-weight: 900; font-size: 7pt; }
+          td { font-weight: 600; font-size: 8pt; }
+          @page { margin: 6mm; size: A4; }
+        </style></head><body>`;
+        
+        // Owner header FIRST
+        if(owner || year) html += `<div class="owner-header">${owner} Year Data: ${year}</div>`;
+        html += `<h1>${title}</h1>`;
+        
+        // KPIs
+        html += '<div class="kpis">';
+        kpis.forEach(k => {
+          html += `<div class="kpi"><div class="kpi-label">${k.label}</div><div class="kpi-val">${k.val}</div></div>`;
+        });
+        html += '</div>';
+        
+        // Table
+        if(headerCells.length && tableRows.length) {
+          html += '<table><thead><tr>';
+          headerCells.forEach(h => html += `<th>${h}</th>`);
+          html += '</tr></thead><tbody>';
+          tableRows.forEach(row => {
+            html += '<tr>';
+            row.forEach(cell => html += `<td>${cell}</td>`);
+            html += '</tr>';
+          });
+          html += '</tbody></table>';
+        }
+        
+        html += `<script>window.onload = function(){ window.print(); }<\/script></body></html>`;
+        
+        printWin.document.write(html);
+        printWin.document.close();
       }); }
     })();
 
@@ -8176,9 +8392,135 @@ Are you sure you want to continue?`;
             const obInp = dom('openingBalance'); if(obInp) save('openingBalance', Number(obInp.value.replace(/,/g,'')||0));
             saveMonthData(months);
             recompute();
-            // call saveAsPDF helper
-            if(typeof saveAsPDF === 'function') await saveAsPDF();
-            else { showToast && showToast('PDF export not available: missing saveAsPDF function'); alert('PDF export not available: missing saveAsPDF function'); }
+            
+            // ===== CREATE PDF DIRECTLY USING jsPDF =====
+            const title = document.querySelector('h1')?.textContent || 'ENBD Performance Tracker';
+            const owner = document.getElementById('owner')?.value || document.querySelector('.y-owner')?.textContent?.trim() || '';
+            const year = document.getElementById('year')?.value || document.querySelector('.y-year')?.textContent?.trim() || '';
+            
+            // Gather KPI data
+            const kpis = [];
+            document.querySelectorAll('.kpi').forEach(kpi => {
+              const label = kpi.querySelector('h3')?.textContent || '';
+              const val = kpi.querySelector('.val')?.textContent || '';
+              if(label && val) kpis.push({label, val});
+            });
+            
+            // Gather table data
+            const tableRows = [];
+            const headerCells = [];
+            document.querySelectorAll('#monthTable thead th').forEach(th => {
+              headerCells.push(th.textContent.trim());
+            });
+            document.querySelectorAll('#monthTable tbody tr').forEach(tr => {
+              const row = [];
+              tr.querySelectorAll('td').forEach(td => {
+                const inp = td.querySelector('input');
+                row.push(inp ? inp.value : td.textContent.trim());
+              });
+              tableRows.push(row);
+            });
+            
+            // Use jsPDF to create PDF
+            const jsPDF = window.jspdf?.jsPDF || window.jsPDF;
+            if(!jsPDF) {
+              alert('PDF library not loaded. Please refresh the page.');
+              return;
+            }
+            
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const pageWidth = doc.internal.pageSize.getWidth();
+            let y = 15;
+            
+            // Owner header
+            if(owner || year) {
+              doc.setFontSize(9);
+              doc.setFont('helvetica', 'bold');
+              doc.text(`${owner} Year Data: ${year}`, 10, y);
+              doc.setDrawColor(200);
+              doc.line(10, y + 2, pageWidth - 10, y + 2);
+              y += 8;
+            }
+            
+            // Title
+            doc.setFontSize(14);
+            doc.setFont('helvetica', 'bold');
+            doc.text(title, pageWidth / 2, y, { align: 'center' });
+            y += 10;
+            
+            // KPIs - 4 per row
+            doc.setFontSize(6);
+            const kpiWidth = 45;
+            const kpiHeight = 18;
+            const kpiGap = 3;
+            const startX = 10;
+            let kpiX = startX;
+            let kpiY = y;
+            
+            kpis.forEach((k, i) => {
+              if(i > 0 && i % 4 === 0) {
+                kpiX = startX;
+                kpiY += kpiHeight + kpiGap;
+              }
+              
+              // KPI box
+              doc.setDrawColor(0);
+              doc.rect(kpiX, kpiY, kpiWidth, kpiHeight);
+              
+              // Label
+              doc.setFontSize(5);
+              doc.setFont('helvetica', 'bold');
+              doc.text(k.label.toUpperCase(), kpiX + kpiWidth/2, kpiY + 4, { align: 'center' });
+              
+              // Value
+              doc.setFontSize(10);
+              doc.text(k.val, kpiX + kpiWidth/2, kpiY + 12, { align: 'center' });
+              
+              kpiX += kpiWidth + kpiGap;
+            });
+            
+            y = kpiY + kpiHeight + 10;
+            
+            // Table
+            if(headerCells.length && tableRows.length) {
+              const colWidth = (pageWidth - 20) / headerCells.length;
+              const rowHeight = 7;
+              
+              // Header
+              doc.setFillColor(230, 230, 230);
+              doc.rect(10, y, pageWidth - 20, rowHeight, 'F');
+              doc.setFontSize(6);
+              doc.setFont('helvetica', 'bold');
+              headerCells.forEach((h, i) => {
+                doc.text(h, 10 + i * colWidth + colWidth/2, y + 5, { align: 'center' });
+              });
+              doc.rect(10, y, pageWidth - 20, rowHeight);
+              y += rowHeight;
+              
+              // Data rows
+              doc.setFont('helvetica', 'normal');
+              doc.setFontSize(7);
+              tableRows.forEach(row => {
+                if(y > 270) { // New page if needed
+                  doc.addPage();
+                  y = 15;
+                }
+                row.forEach((cell, i) => {
+                  doc.text(String(cell).substring(0, 15), 10 + i * colWidth + colWidth/2, y + 5, { align: 'center' });
+                });
+                doc.rect(10, y, pageWidth - 20, rowHeight);
+                // Column lines
+                for(let i = 1; i < headerCells.length; i++) {
+                  doc.line(10 + i * colWidth, y, 10 + i * colWidth, y + rowHeight);
+                }
+                y += rowHeight;
+              });
+            }
+            
+            // Save the PDF
+            const filename = `ENBD_${owner || 'Report'}_${year || 'Data'}.pdf`;
+            doc.save(filename);
+            showToast && showToast('PDF saved: ' + filename);
           }catch(err){ console.error('Save PDF failed', err); alert('Save as PDF failed: ' + String(err)); }
         });
         btn._pdfHandlerAttached = true;
